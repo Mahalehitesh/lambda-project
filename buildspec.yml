@@ -3,12 +3,9 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo "Preparing Lambda package"
-      - ls
-      - zip -r function.zip lambda_function.py
-      - echo "Checking ZIP contents"
-      - unzip -l function.zip
-
-artifacts:
-  files:
-    - function.zip
+      - echo "Zipping code"
+      - zip function.zip lambda_function.py
+      - echo "Updating Lambda"
+      - aws lambda update-function-code \
+        --function-name today-my-lambda-function \
+        --zip-file fileb://function.zip
