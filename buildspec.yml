@@ -3,8 +3,9 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo "Zipping Lambda code"
-      - zip function.zip lambda_function.py
+      - echo "Preparing Lambda package"
+      - ls
+      - zip -r function.zip lambda_function.py
 
 artifacts:
   files:
